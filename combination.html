@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Дано трёхзначное десятичное число, запись которого не содержит нулей. 
+        Написать программу, определяющую, сколько различных чисел можно составить из цифр этого числа, 
+        используя каждую цифру один раз.
+        (Например, из цифр числа 112 можно составить три числа: 112, 121 и 211.)
+    </p>
+    <p>Введите число</p>
+    <input type="text" id="num">
+    <input type="button" onclick="Combo();" value="определить">
+    <p id="answer"></p>
+    <p id="answer2"></p>
+    <script>
+          
+        function Combo(){
+            // var fisrt =str.at(0);
+            // var second = str.at(1);
+            // var third = str.at(2);
+            var combination;
+            var str =document.getElementById('num').value;
+            var mas = [str.at(0),str.at(1),str.at(2)];//массив с числами строки
+            var com;
+            var P;
+            if(  str.at(0)!=0&&str.at(1)!=0&&str.at(2)!=0&&str.at(3)==undefined&&
+            isNaN(str.at(0)/2)===false&&  isNaN(str.at(1)/2)===false&&  isNaN(str.at(2)/2)===false)
+            {
+                if( str.at(0)==str.at(1)&&str.at(1)==str.at(2)&&str.at(2)==str.at(0)){
+                P=1;//расчет факториала числа 1
+                com = str.at(0)+""+str.at(1)+""+str.at(2);
+            document.getElementById('answer').innerHTML="Количество комбинаций = "+P+" комбинации: "+str;
+            }
+        
+            else if(str.at(0)!=null&&str.at(1)!=null&&str.at(2)!=null
+          &&
+            str.at(0)!=str.at(1)&&str.at(1)!=str.at(2)&&str.at(2)!=str.at(0))
+            {
+                P=1*2*3;//расчет факториала числа 3
+                com=str.at(0)+""+str.at(1)+""+str.at(2)+", "+
+                ""+str.at(0)+""+str.at(2)+""+str.at(1)+", "+
+                ""+str.at(1)+""+str.at(0)+""+str.at(2)+", "+
+                ""+str.at(1)+""+str.at(2)+""+str.at(0)+", "+
+                ""+str.at(2)+""+str.at(0)+""+str.at(1)+", "+
+                ""+str.at(2)+""+str.at(1)+""+str.at(0)+", ";
+            document.getElementById('answer').innerHTML="Количество комбинаций = "+P+" комбинации: "+com;
+            }
+            else if(str.at(2)==str.at(0)){
+                P=1*2+1;//расчет факториала числа 2
+                com = str.at(0)+""+str.at(1)+""+str.at(1)+", "+
+                ""+str.at(0)+""+str.at(0)+""+str.at(1)+", "+
+                ""+str.at(2)+""+str.at(1)+""+str.at(0)+", ";
+            document.getElementById('answer').innerHTML="Количество комбинаций = "+P+" комбинации: "+com;
+            }
+        else if( str.at(0)==str.at(1))
+        {
+            P=1*2+1;//расчет факториала числа 2
+                com = str.at(2)+""+str.at(1)+""+str.at(1)+", "+
+                ""+str.at(0)+""+str.at(0)+""+str.at(2)+", "+
+                ""+str.at(0)+""+str.at(2)+""+str.at(0)+", ";
+            document.getElementById('answer').innerHTML="Количество комбинаций = "+P+" комбинации: "+com;
+        }
+        else if(str.at(1)==str.at(2))
+        {
+            P=1*2+1;//расчет факториала числа 2
+                com = str.at(0)+""+str.at(1)+""+str.at(1)+", "+
+                ""+str.at(2)+""+str.at(0)+""+str.at(2)+", "+
+                ""+str.at(2)+""+str.at(2)+""+str.at(0)+", ";
+            document.getElementById('answer').innerHTML="Количество комбинаций = "+P+" комбинации: "+com;
+        }
+            }
+            else{
+                document.getElementById('answer').innerHTML="Некорректный ввод";
+            }
+           
+           
+     }
+        
+     
+        
+    </script>
+</body>
+</html>
